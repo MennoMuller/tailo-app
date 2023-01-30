@@ -1,14 +1,16 @@
 import React from "react";
-import "./Avatar.css";
+//import "./Avatar.css";
 
 const Avatar = (props) => {
   return (
-    <div className="avatar-wrapper">
+    <div className="flex flex-row items-center gap-1 sm:flex-col">
       <img
         src={props.image}
-        className="avatar-img"
+        className="h-20 w-20 rounded-full object-cover"
       />
-      <h3>{props.username}</h3>
+      <h3 className="text-lg font-bold">
+        {props.username}
+      </h3>
     </div>
   );
 };

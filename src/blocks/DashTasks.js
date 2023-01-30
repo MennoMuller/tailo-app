@@ -4,12 +4,17 @@ import TaskItem from "../components/TaskItem";
 
 const DashTasks = (props) => {
   return (
-    <div className="grid-item item-a">
-      <div className="dash-header-box">
-        <h2>My tasks</h2>
-        <Link to="./tasks">See all</Link>
+    <div className="col-start-1 col-end-1 row-start-1 row-end-3 flex max-h-full max-w-full flex-col rounded-2xl bg-white p-5">
+      <div className="mb-2 flex flex-row justify-between">
+        <h2 className="text-2xl font-bold">My tasks</h2>
+        <Link
+          to="./tasks"
+          className="text-blue-500 hover:underline"
+        >
+          See all
+        </Link>
       </div>
-      <div className="list-wrapper">
+      <div className="flex shrink grow flex-col overflow-y-auto overflow-x-hidden">
         {props.tasks
           .filter((task) => !task.complete)
           .sort(props.compareTasks)

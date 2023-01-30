@@ -1,13 +1,15 @@
 import React from "react";
 import logo from "./../img/lorem-logo.png";
 
-import "./Logo.css";
-
 const Logo = () => {
   return (
-    <div className="logo">
-      <img className="logo-img" src={logo} alt="logo" />
-      <h1 className="lorem-text">Tailo</h1>
+    <div className="flex flex-row items-center">
+      <img
+        className="h-12 w-12 object-cover"
+        src={logo}
+        alt="logo"
+      />
+      <h1 className="text-4xl font-bold">Tailo</h1>
     </div>
   );
 };

@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "Do something",
+    "category": "Social",
+    "deadline_date": "2023-01-25",
+    "deadline_time": "13:30",
+    "complete": false,
+    "user_id": 1
+  },
+  {
+    "id": 2,
+    "name": "Do something else",
+    "category": "Misc",
+    "deadline_date": "2023-02-22",
+    "complete": true,
+    "user_id": 1
+  },
+  {
+    "id": 3,
+    "name": "Do something without a deadline",
+    "category": "Misc",
+    "complete": false,
+    "user_id": 1
+  },
+  {
+    "id": 4,
+    "name": "Do something for school",
+    "category": "School",
+    "deadline_date": "2023-02-22",
+
+    "complete": false,
+    "user_id": 1
+  },
+  {
+    "id": 5,
+    "name": "Do something at home",
+    "category": "Home",
+    "deadline_date": "2023-02-10",
+    "deadline_time": "13:30",
+    "complete": false,
+    "user_id": 1
+  },
+  {
+    "id": 6,
+    "name": "Do something in the past",
+    "category": "Home",
+    "deadline_date": "2023-01-19",
+    "deadline_time": "18:30",
+    "complete": true,
+    "user_id": 1
+  },
+  {
+    "id": 7,
+    "name": "Do something today",
+    "category": "Home",
+    "deadline_date": "2023-01-20",
+    "deadline_time": "18:30",
+    "complete": false,
+    "user_id": 1
+  }
+]

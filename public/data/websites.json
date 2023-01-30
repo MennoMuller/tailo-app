@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "url": "google.com",
+    "name": "Google",
+    "description": "Search engine.",
+    "clicks": 10,
+    "user_id": 1
+  },
+  {
+    "id": 2,
+    "url": "stackoverflow.com",
+    "name": "Stack Overflow",
+    "description": "Answers to programming questions",
+    "clicks": 15,
+    "user_id": 1
+  },
+  {
+    "id": 3,
+    "url": "w3schools.com",
+    "name": "W3Schools",
+    "description": "Source of information about programming.",
+    "clicks": 20,
+    "user_id": 1
+  },
+  {
+    "id": 4,
+    "url": "go.com",
+    "name": "Go.com",
+    "description": "Website without https, included for testing purposes",
+    "clicks": 3,
+    "user_id": 1
+  },
+  {
+    "id": 5,
+    "url": "reactjs.org",
+    "name": "ReactJS",
+    "description": "Site without www, included for testing purposes",
+    "clicks": 4,
+    "user_id": 1
+  },
+  {
+    "id": 6,
+    "url": "computer.howstuffworks.com/internet/basics/question180.htm",
+    "name": "HowStuffWorks",
+    "description": "Site with something other than www, included for testing purposes",
+    "clicks": 2,
+    "user_id": 1
+  }
+]

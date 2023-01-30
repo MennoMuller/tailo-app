@@ -3,18 +3,25 @@ import { Link } from "react-router-dom";
 
 const DashWebsites = (props) => {
   return (
-    <div className="grid-item item-b">
-      <div className="dash-header-box">
-        <h2>My favorite websites</h2>
-        <Link to="./websites">See all</Link>
+    <div className="col-start-2 col-end-2 row-start-1 row-end-1 flex max-h-full max-w-full flex-col rounded-2xl bg-white p-5">
+      <div className="mb-2 flex flex-row justify-between">
+        <h2 className="text-2xl font-bold">
+          My favorite websites
+        </h2>
+        <Link
+          to="./websites"
+          className="text-blue-500 hover:underline"
+        >
+          See all
+        </Link>
       </div>
-      <div className="dash-sites-box">
+      <div className="flex flex-row flex-wrap items-center justify-evenly">
         {props.websites
           .sort((a, b) => b.clicks - a.clicks)
           .slice(0, 9)
           .map((site) => (
             <a
-              className="dash-site"
+              className="flex w-36 flex-row items-center gap-2 overflow-hidden"
               href={
                 site.url.includes("http")
                   ? site.url
@@ -26,16 +33,15 @@ const DashWebsites = (props) => {
               key={site.id}
             >
               <img
-                className="dash-site-icon"
+                className="h-8 w-8 object-cover"
                 src={
                   site.icon
                     ? site.icon
                     : props.iconGetter(site.url)
                 }
+                alt=""
               />
-              <h4 className="dash-site-label">
-                {site.name}
-              </h4>
+              <h4 className="font-bold">{site.name}</h4>
             </a>
           ))}
       </div>

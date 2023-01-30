@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import "./App.css";
+//import "./App.css";
 
 import Header from "./components/Header";
 import Dashboard from "./pages/Dashboard";
@@ -194,63 +194,59 @@ const App = () => {
   }, [geo]);
 
   return (
-    <div className="app-grid">
-      <Header
-        date={date}
-        tick={tick}
-      />
-      <Sidebar
-        avatar={avatar}
-        username={user.username}
-      />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Dashboard
-              weather={current}
-              websites={websites}
-              tasks={tasks}
-              date={date}
-              compareTasks={compareTasks}
-              iconGetter={getDefaultIconUrl}
-            />
-          }
-        />
-        <Route
-          path="/tasks"
-          element={
-            <Tasks
-              tasks={tasks}
-              toggleComplete={toggleComplete}
-              date={date}
-              compareTasks={compareTasks}
-            />
-          }
-        />
-        <Route
-          path="/websites"
-          element={
-            <Websites
-              websites={websites}
-              iconGetter={getDefaultIconUrl}
-            />
-          }
-        />
-        <Route
-          path="/weather"
-          element={
-            <Weather
-              onLocationUpdate={handleLocationUpdate}
-              weather={{
-                geo: geo,
-                current: current,
-                predictions: predictions
-              }}
-            />
-          }
-        />
-      </Routes>
+    <div>
+      <Header date={date} tick={tick} />
+      <div className="flex flex-col sm:flex-row">
+        <Sidebar avatar={avatar} username={user.username} />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Dashboard
+                weather={current}
+                websites={websites}
+                tasks={tasks}
+                date={date}
+                compareTasks={compareTasks}
+                iconGetter={getDefaultIconUrl}
+              />
+            }
+          />
+          <Route
+            path="/tasks"
+            element={
+              <Tasks
+                tasks={tasks}
+                toggleComplete={toggleComplete}
+                date={date}
+                compareTasks={compareTasks}
+              />
+            }
+          />
+          <Route
+            path="/websites"
+            element={
+              <Websites
+                websites={websites}
+                iconGetter={getDefaultIconUrl}
+              />
+            }
+          />
+          <Route
+            path="/weather"
+            element={
+              <Weather
+                onLocationUpdate={handleLocationUpdate}
+                weather={{
+                  geo: geo,
+                  current: current,
+                  predictions: predictions
+                }}
+              />
+            }
+          />
+        </Routes>
+      </div>
     </div>
   );
 };

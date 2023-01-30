@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .colorful-background {
+    background-image: url("./img/background.jpg");
+    background-size: cover;
+    background-position: center;
+  }
+
+  .main-height {
+    height: calc(100vh - 5rem);
+    max-height: calc(100vh - 5rem);
+  }
+}
+a.active {
+  font-weight: 700;
+  background-color: rgb(243, 243, 243);
+}
