@@ -1,0 +1,274 @@
+.list-item {
+  display: grid;
+  grid-template-columns: 1fr 25px;
+  grid-template-rows: min-content 1fr;
+  position: relative;
+  padding: 5px;
+  max-width: 100%;
+}
+
+/* .site-item {
+  border: 1px solid black;
+} */
+
+.task-item {
+  border: 1px solid black;
+  border-radius: 10px;
+
+  margin-bottom: 10px;
+}
+
+.overdue {
+  background-color: rgba(240, 128, 128, 0.3);
+}
+
+.task-info {
+  grid-row-start: 1;
+  grid-row-end: span 2;
+  grid-column: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.category-label {
+  color: gray;
+  font-size: small;
+}
+
+.task-label {
+  margin: 0;
+}
+
+.menu-button {
+  grid-row: 1;
+  grid-column: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  height: 10px;
+  position: relative;
+  cursor: pointer;
+}
+
+.meatballs-menu {
+  color: #000;
+  position: absolute;
+  margin-left: 0px;
+  margin-top: 0px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  border: solid 1px currentColor;
+  background-color: currentColor;
+}
+
+.meatballs-menu:before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: -8px;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  border: solid 1px currentColor;
+  background-color: currentColor;
+}
+
+.meatballs-menu:after {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 6px;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  border: solid 1px currentColor;
+  background-color: currentColor;
+}
+
+.menu-button:hover .meatballs-menu {
+  color: rgb(79, 79, 79);
+}
+
+/* Custom Checkmark */
+
+/* Customize the label (the container) */
+.check-container {
+  display: block;
+  position: relative;
+  padding-left: 0px;
+  margin-bottom: 0px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  grid-row: 2;
+  grid-column: 2;
+  height: 25px;
+  width: 25px;
+  align-self: end;
+}
+
+/* Hide the browser's default checkbox */
+.check-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 5px;
+}
+
+/* On mouse-over, add a grey background color */
+.check-container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.check-container input:checked ~ .checkmark {
+  background-color: lawngreen;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.check-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.check-container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+/* OPTIONS MENU */
+
+.item-menu {
+  width: max-content;
+  grid-row: 1;
+  grid-column: 2;
+  position: absolute;
+  justify-self: end;
+  z-index: 1;
+  background-color: black;
+  border-radius: 10px;
+  padding: 0;
+  list-style-type: none;
+
+  margin-top: 15px;
+  /* translate: 3.5rem 15px; */
+}
+
+.menu-option {
+  border: none;
+  background: none;
+  color: white;
+  font-size: 1rem;
+  margin: 0;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.menu-option:hover {
+  background-color: rgba(128, 128, 128, 0.3);
+}
+
+.menu-option:active {
+  background-color: rgba(128, 128, 128, 0.45);
+}
+
+/*DEADLINE INFO*/
+
+.deadline-info {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.deadline-info .info-box {
+  display: flex;
+  align-items: center;
+}
+
+.deadline-icon {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  font-weight: bold;
+  border-radius: 50%;
+  margin-right: 10px;
+  color: white;
+}
+
+.red-icon {
+  background-color: red;
+}
+
+.yellow-icon {
+  background-color: yellow;
+}
+
+.green-icon {
+  background-color: lawngreen;
+  color: lawngreen;
+}
+
+.deadline-warning {
+  font-size: medium;
+}
+
+.deadline {
+  font-size: smaller;
+  margin-right: 5px;
+}
+
+.site-box {
+  grid-row: 1;
+  grid-column: 1;
+  width: fit-content;
+}
+.site-description {
+  grid-row: 2;
+  grid-column-start: 1;
+  grid-column-end: span 2;
+  max-width: 100%;
+  margin: 0;
+}
+
+.site-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: cover;
+}
