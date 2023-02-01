@@ -22,12 +22,12 @@ const TaskItem = (props) => {
     <div
       className={
         !props.complete && timeLeft < 0
-          ? "relative grid max-w-full auto-cols-auto grid-rows-2 rounded-lg border border-solid border-black bg-red-400 p-2"
-          : "relative grid max-w-full auto-cols-auto grid-rows-2 rounded-lg border border-solid border-black p-2"
+          ? "relative grid max-w-full auto-cols-auto grid-rows-2 rounded-lg border border-solid border-black bg-red-400 p-2 dark:border-white dark:bg-red-800"
+          : "relative grid max-w-full auto-cols-auto grid-rows-2 rounded-lg border border-solid border-black p-2 dark:border-white"
       }
     >
       <div className="col-start-1 col-end-1 row-start-1 row-end-3 flex flex-col justify-end overflow-hidden">
-        <span className="text-sm text-slate-500">
+        <span className="text-sm text-slate-500 dark:text-slate-400">
           {props.category}
         </span>
         <h4 className="font-bold">{props.name}</h4>
@@ -82,7 +82,7 @@ const TaskItem = (props) => {
         <ClickAwayListener
           onClickAway={() => setPopup(false)}
         >
-          <div className="absolute z-10 col-start-2 col-end-2 row-start-1 row-end-1 mt-3 w-max list-none justify-self-end overflow-hidden rounded-lg bg-black">
+          <div className="absolute z-10 col-start-2 col-end-2 row-start-1 row-end-1 mt-3 w-max list-none justify-self-end overflow-hidden rounded-lg bg-black dark:border dark:border-solid dark:border-white">
             <li>
               <button
                 className="w-full cursor-pointer py-1 px-2 text-white hover:bg-slate-800"
