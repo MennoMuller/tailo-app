@@ -2,7 +2,7 @@ import React from "react";
 
 const PredictionItem = (props) => {
   return (
-    <div className="flex flex-row items-center justify-between rounded-lg bg-slate-300 p-2 text-sm">
+    <div className="flex flex-row items-center justify-between rounded-lg bg-slate-300 p-2 text-sm dark:bg-slate-700">
       <p className="w-24 text-center font-bold">
         {props.predictionItem.dt_txt.slice(0, -3)}
       </p>
@@ -17,13 +17,13 @@ const PredictionItem = (props) => {
           ".png"
         }
         alt={props.predictionItem.weather[0].main}
-        className="flex h-12 w-12 items-center justify-center rounded-full bg-slate-400 object-cover text-center"
+        className="flex h-12 w-12 items-center justify-center rounded-full bg-slate-400 object-cover text-center dark:bg-slate-900"
       />
 
       <p className="ml-1 w-12 text-left">
         {props.predictionItem.weather[0].main}
       </p>
-      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-slate-400 object-cover text-center font-bold">
+      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-slate-400 object-cover text-center font-bold dark:bg-slate-900">
         <p>
           {props.predictionItem.rain
             ? props.predictionItem.rain["3h"]

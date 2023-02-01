@@ -4,11 +4,9 @@ const WeatherNow = (props) => {
   return (
     <div
       className={
-        "col-start-2 col-end-2 row-start-1 row-end-1 flex max-h-full max-w-full flex-col" +
-          props.temperature >
-        15
-          ? " rounded-2xl bg-orange-400 p-5"
-          : " rounded-2xl bg-blue-300 p-5"
+        props.temperature > 15
+          ? "col-start-2 col-end-2 row-start-1 row-end-1 flex max-h-full max-w-full flex-col rounded-2xl bg-orange-400 p-5 dark:bg-orange-900 dark:text-white"
+          : "col-start-2 col-end-2 row-start-1 row-end-1 flex max-h-full max-w-full flex-col rounded-2xl bg-blue-300 p-5 dark:bg-blue-900 dark:text-white"
       }
     >
       <h2 className="mb-2 text-2xl font-bold">
@@ -27,12 +25,12 @@ const WeatherNow = (props) => {
               ".png"
             }
             alt=""
-            className="h-12 w-12 rounded-full bg-white bg-opacity-50 object-cover"
+            className="h-12 w-12 rounded-full bg-white bg-opacity-50 object-cover dark:bg-black dark:bg-opacity-50"
           />
           <p className="shrink">{props.description}</p>
         </div>
         <div className="col-start-3 col-end-3 row-start-1 row-end-1 flex flex-row items-center gap-3 text-center">
-          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white bg-opacity-50 text-center text-sm">
+          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white bg-opacity-50 text-center text-sm dark:bg-black dark:bg-opacity-50">
             <p id="current-feels-like">
               {props.feelsLike}°C
             </p>
@@ -40,7 +38,7 @@ const WeatherNow = (props) => {
           <p className="shrink">feels like</p>
         </div>
         <div className="col-start-2 col-end-2 row-start-2 row-end-2 flex flex-row items-center gap-3 text-center">
-          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white bg-opacity-50 text-center text-sm">
+          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white bg-opacity-50 text-center text-sm dark:bg-black dark:bg-opacity-50">
             <p>
               {props.wind ? props.wind : 0}
               <br />
@@ -50,7 +48,7 @@ const WeatherNow = (props) => {
           <p className="shrink">wind</p>
         </div>
         <div className="col-start-3 col-end-3 row-start-2 row-end-2 flex flex-row items-center gap-3 text-center">
-          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white bg-opacity-50 text-center text-sm">
+          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white bg-opacity-50 text-center text-sm dark:bg-black dark:bg-opacity-50">
             <p>
               {props.rain}
               <br />
