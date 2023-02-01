@@ -60,7 +60,7 @@ const TasksMain = (props) => {
           ))}
       </div>
       <button
-        className="mt-2 flex h-12 w-12 shrink-0 flex-col items-center justify-center rounded-full bg-black pb-3 text-5xl text-white dark:bg-white dark:text-black"
+        className="mt-2 flex h-12 w-12 shrink-0 flex-col items-center justify-center rounded-full bg-black pb-3 text-5xl text-white"
         onClick={() => setMenu(true)}
       >
         +

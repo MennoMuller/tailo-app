@@ -14,7 +14,7 @@ const ClicksSquare = (props) => {
       }}
       target="_blank"
     >
-      <div className="shrink-0 p-1 dark:rounded-md dark:bg-white dark:bg-opacity-40">
+      <div className="shrink-0 p-1 dark:rounded-md dark:bg-white dark:bg-opacity-30">
         <img
           className="h-10 w-10 object-cover"
           src={

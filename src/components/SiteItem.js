@@ -20,7 +20,7 @@ const SiteItem = (props) => {
         }}
         target="_blank"
       >
-        <div className="inline h-7 w-7 shrink-0 p-1 dark:rounded-md dark:bg-white dark:bg-opacity-60">
+        <div className="inline h-7 w-7 shrink-0 p-1 dark:rounded-md dark:bg-white dark:bg-opacity-30">
           <img
             className="h-5 w-5 object-cover"
             src={
