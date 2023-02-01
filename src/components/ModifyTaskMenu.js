@@ -3,9 +3,7 @@ import React from "react";
 const ModifyTaskMenu = (props) => {
   return (
     <div className="grid-item popup-window">
-      <h2>
-        {this.props.modify ? "Modify task" : "Add a task"}
-      </h2>
+      <h2>{props.modify ? "Modify task" : "Add a task"}</h2>
       <form>
         <div className="form-grid">
           <div className="form-field task-name">
@@ -23,10 +21,7 @@ const ModifyTaskMenu = (props) => {
             <label htmlFor="category">
               Category <span className="red">*</span>
             </label>
-            <select
-              id="category"
-              name="category"
-            >
+            <select id="category" name="category">
               <option
                 value="School"
                 selected={props.category == "School"}
