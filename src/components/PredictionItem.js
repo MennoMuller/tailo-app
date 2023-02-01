@@ -2,34 +2,35 @@ import React from "react";
 
 const PredictionItem = (props) => {
   return (
-    <div className="prediction-item">
-      <p className="prediction-time">
+    <div className="flex flex-row items-center justify-between rounded-lg bg-slate-300 p-2 text-sm">
+      <p className="w-24 text-center font-bold">
         {props.predictionItem.dt_txt.slice(0, -3)}
       </p>
-      <p className="prediction-temp">
-        {props.predictionItem.main.temp}°
+      <p className="mr-3 w-12 text-center text-base">
+        {props.predictionItem.main.temp}°C
       </p>
-      <div className="prediction-icon">
-        <img
-          src={
-            "http://openweathermap.org/img/w/" +
-            props.predictionItem.weather[0].icon +
-            ".png"
-          }
-          alt={props.predictionItem.weather[0].main}
-        />
-      </div>
-      <p className="prediction-desc">
+
+      <img
+        src={
+          "http://openweathermap.org/img/w/" +
+          props.predictionItem.weather[0].icon +
+          ".png"
+        }
+        alt={props.predictionItem.weather[0].main}
+        className="flex h-12 w-12 items-center justify-center rounded-full bg-slate-400 object-cover text-center"
+      />
+
+      <p className="ml-1 w-12 text-left">
         {props.predictionItem.weather[0].main}
       </p>
-      <div className="prediction-icon">
+      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-slate-400 object-cover text-center font-bold">
         <p>
           {props.predictionItem.rain
             ? props.predictionItem.rain["3h"]
             : 0}
         </p>
       </div>
-      <p className="prediction-label">mm rain</p>
+      <p className="ml-2 text-left">mm rain</p>
     </div>
   );
 };

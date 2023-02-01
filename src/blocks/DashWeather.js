@@ -22,11 +22,11 @@ const DashWeather = (props) => {
         </Link>
       </div>
 
-      <div className="grid grid-cols-3 grid-rows-2 items-center justify-items-center">
+      <div className="grid grid-cols-3 grid-rows-2 items-center justify-items-start">
         <p className="col-start-1 col-end-1 row-start-1 row-end-3 text-4xl font-bold">
           {props.temperature}°C
         </p>
-        <div className="col-start-2 col-end-2 row-start-1 row-end-1 flex flex-col items-center text-center">
+        <div className="col-start-2 col-end-2 row-start-1 row-end-1 flex flex-row items-center gap-3 text-center">
           <img
             src={
               "http://openweathermap.org/img/w/" +
@@ -36,17 +36,17 @@ const DashWeather = (props) => {
             alt=""
             className="h-12 w-12 rounded-full bg-white bg-opacity-50 object-cover"
           />
-          <p>{props.description}</p>
+          <p className="shrink">{props.description}</p>
         </div>
-        <div className="col-start-3 col-end-3 row-start-1 row-end-1 flex flex-col items-center text-center">
+        <div className="col-start-3 col-end-3 row-start-1 row-end-1 flex flex-row items-center gap-3 text-center">
           <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white bg-opacity-50 text-center text-sm">
             <p id="current-feels-like">
               {props.feelsLike}°C
             </p>
           </div>
-          <p>feels like</p>
+          <p className="shrink">feels like</p>
         </div>
-        <div className="col-start-2 col-end-2 row-start-2 row-end-2 flex flex-col items-center text-center">
+        <div className="col-start-2 col-end-2 row-start-2 row-end-2 flex flex-row items-center gap-3 text-center">
           <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white bg-opacity-50 text-center text-sm">
             <p>
               {props.wind ? props.wind : 0}
@@ -54,9 +54,9 @@ const DashWeather = (props) => {
               km/h
             </p>
           </div>
-          <p>wind</p>
+          <p className="shrink">wind</p>
         </div>
-        <div className="col-start-3 col-end-3 row-start-2 row-end-2 flex flex-col items-center text-center">
+        <div className="col-start-3 col-end-3 row-start-2 row-end-2 flex flex-row items-center gap-3 text-center">
           <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white bg-opacity-50 text-center text-sm">
             <p>
               {props.rain}
@@ -64,7 +64,7 @@ const DashWeather = (props) => {
               mm
             </p>
           </div>
-          <p>rain</p>
+          <p className="shrink">rain</p>
         </div>
       </div>
     </div>

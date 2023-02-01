@@ -2,14 +2,14 @@ import React from "react";
 
 const WeatherLocation = (props) => {
   return (
-    <div className="grid-item item-c">
-      <h2>Location</h2>
-      <h1 className="city-name">{props.city}</h1>
+    <div className="col-start-2 col-end-2 row-start-2 row-end-2 flex max-w-full flex-col rounded-2xl bg-white p-5 sm:max-h-full">
+      <h2 className="text-2xl font-bold">Location</h2>
+      <p className="text-4xl font-bold">{props.city}</p>
       <p>
         {props.state}, {props.country}
       </p>
       <button
-        className="submit-button"
+        className="colorful-background self-end rounded-3xl px-3 py-2 text-white"
         onClick={() =>
           props.onLocationUpdate(
             prompt(
@@ -21,6 +21,7 @@ const WeatherLocation = (props) => {
       >
         Edit Location
       </button>
+      <div className="w-screen"></div>
     </div>
   );
 };
