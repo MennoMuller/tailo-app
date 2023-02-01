@@ -21,3 +21,9 @@ a.active {
   font-weight: 700;
   background-color: rgb(243, 243, 243);
 }
+@media (prefers-color-scheme: dark) {
+  a.active {
+    font-weight: 700;
+    background-color: rgb(61, 61, 61);
+  }
+}

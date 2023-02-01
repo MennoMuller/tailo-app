@@ -10,7 +10,7 @@ import weatherIcon from "./../img/weather.png";
 
 const Sidebar = (props) => {
   return (
-    <div className="mx-auto -mt-4 mb-4 flex  shrink-0 flex-col items-center justify-start gap-10 rounded-2xl bg-white p-4 sm:mx-4 sm:-mt-14">
+    <div className="mx-auto -mt-4 mb-4 flex  shrink-0 flex-col items-center justify-start gap-10 rounded-2xl bg-white p-4 dark:border dark:border-solid dark:border-white dark:bg-black sm:mx-4 sm:-mt-14">
       <div className="flex flex-row gap-5 sm:flex-col">
         <Logo />
         <Avatar
@@ -23,12 +23,12 @@ const Sidebar = (props) => {
           <li>
             <NavLink
               to="/"
-              className="flex flex-row items-center gap-2 rounded p-2 text-lg text-black hover:opacity-80"
+              className="flex flex-row items-center gap-2 rounded p-2 text-lg text-black hover:opacity-80 dark:text-white"
             >
               <img
                 src={dashboardIcon}
                 alt=""
-                className="h-7 w-7 object-cover"
+                className="h-7 w-7 object-cover dark:invert"
               />
               <span className="hidden sm:inline">
                 Dashboard
@@ -38,12 +38,12 @@ const Sidebar = (props) => {
           <li>
             <NavLink
               to="/tasks"
-              className="flex flex-row items-center gap-2 rounded p-2 text-lg text-black hover:opacity-80"
+              className="flex flex-row items-center gap-2 rounded p-2 text-lg text-black hover:opacity-80 dark:text-white"
             >
               <img
                 src={tasksIcon}
                 alt=""
-                className="h-7 w-7 object-cover"
+                className="h-7 w-7 object-cover dark:invert"
               />
               <span className="hidden sm:inline">
                 Tasks
@@ -53,12 +53,12 @@ const Sidebar = (props) => {
           <li>
             <NavLink
               to="/websites"
-              className="flex flex-row items-center gap-2 rounded p-2 text-lg text-black hover:opacity-80"
+              className="flex flex-row items-center gap-2 rounded p-2 text-lg text-black hover:opacity-80 dark:text-white"
             >
               <img
                 src={websitesIcon}
                 alt=""
-                className="h-7 w-7 object-cover"
+                className="h-7 w-7 object-cover dark:invert"
               />
               <span className="hidden sm:inline">
                 Websites
@@ -68,12 +68,12 @@ const Sidebar = (props) => {
           <li>
             <NavLink
               to="/weather"
-              className="flex flex-row items-center gap-2 rounded p-2 text-lg text-black hover:opacity-80"
+              className="flex flex-row items-center gap-2 rounded p-2 text-lg text-black hover:opacity-80 dark:text-white"
             >
               <img
                 src={weatherIcon}
                 alt=""
-                className="h-7 w-7 object-cover"
+                className="h-7 w-7 object-cover dark:invert"
               />
               <span className="hidden sm:inline">
                 Weather

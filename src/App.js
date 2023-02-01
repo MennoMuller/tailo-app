@@ -194,7 +194,7 @@ const App = () => {
 
   return (
     <>
-      <div className="fixed -z-50 h-screen w-screen bg-orange-100"></div>
+      <div className="fixed -z-50 h-screen w-screen bg-orange-100 dark:bg-slate-900"></div>
       <Header date={date} tick={tick} />
       <div className="flex flex-col sm:flex-row">
         <Sidebar avatar={avatar} username={user.username} />
