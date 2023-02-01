@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const DashWebsites = (props) => {
   return (
-    <div className="col-start-2 col-end-2 row-start-1 row-end-1 flex max-h-full max-w-full flex-col rounded-2xl bg-white p-5">
+    <div className="col-start-2 col-end-2 row-start-1 row-end-1 flex max-h-full max-w-full flex-col rounded-2xl bg-white p-5 dark:bg-black dark:text-white">
       <div className="mb-2 flex flex-row justify-between">
         <h2 className="text-2xl font-bold">
           My favorite websites
@@ -32,15 +32,17 @@ const DashWebsites = (props) => {
               }}
               key={site.id}
             >
-              <img
-                className="h-8 w-8 object-cover"
-                src={
-                  site.icon
-                    ? site.icon
-                    : props.iconGetter(site.url)
-                }
-                alt=""
-              />
+              <div className="shrink-0 p-1 dark:rounded-md dark:bg-white dark:bg-opacity-60">
+                <img
+                  className="h-8 w-8 object-cover"
+                  src={
+                    site.icon
+                      ? site.icon
+                      : props.iconGetter(site.url)
+                  }
+                  alt=""
+                />
+              </div>
               <h4 className="font-bold">{site.name}</h4>
             </a>
           ))}

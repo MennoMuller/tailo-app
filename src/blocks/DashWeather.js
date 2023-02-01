@@ -5,11 +5,9 @@ const DashWeather = (props) => {
   return (
     <div
       className={
-        "col-start-2 col-end-2 row-start-2 row-end-2 flex max-h-full max-w-full flex-col" +
-          props.temperature >
-        15
-          ? " rounded-2xl bg-orange-400 p-5"
-          : " rounded-2xl bg-blue-300 p-5"
+        props.temperature > 15
+          ? "col-start-2 col-end-2 row-start-2 row-end-2 flex max-h-full max-w-full flex-col rounded-2xl bg-orange-400 p-5 dark:bg-orange-900 dark:text-white"
+          : "col-start-2 col-end-2 row-start-2 row-end-2 flex max-h-full max-w-full flex-col rounded-2xl bg-blue-300 p-5 dark:bg-blue-900 dark:text-white"
       }
     >
       <div className="mb-2 flex flex-row justify-between">
