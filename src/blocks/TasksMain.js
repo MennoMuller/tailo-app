@@ -8,9 +8,9 @@ const TasksMain = (props) => {
   const [filter, setFilter] = useState(null);
   const [menu, setMenu] = useState(false);
   return (
-    <div className="grid-item item-a">
-      <h2>My tasks</h2>
-      <div className="filters-box">
+    <div className="col-start-1 col-end-1 row-start-1 row-end-3 flex max-h-full max-w-full flex-col rounded-2xl bg-white p-5">
+      <h2 className="text-2xl font-bold">My tasks</h2>
+      <div className="my-2 flex flex-row items-center justify-between">
         <FilterButton
           filter={filter}
           myFilter="All tasks"
@@ -37,7 +37,7 @@ const TasksMain = (props) => {
           setFilter={setFilter}
         />
       </div>
-      <div className="list-wrapper">
+      <div className="flex shrink grow flex-col overflow-y-auto overflow-x-hidden">
         {(filter != null
           ? props.tasks
               .filter((task) => !task.complete)
@@ -60,7 +60,7 @@ const TasksMain = (props) => {
           ))}
       </div>
       <button
-        className="add-button"
+        className="mt-2 flex h-12 w-12 shrink-0 flex-col items-center justify-center rounded-full bg-black pb-3 text-5xl text-white"
         onClick={() => setMenu(true)}
       >
         +

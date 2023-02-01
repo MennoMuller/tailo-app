@@ -5,8 +5,8 @@ const FilterButton = (props) => {
     <button
       className={
         props.filter == filterValue
-          ? "filter-button active-filter"
-          : "filter-button"
+          ? "rounded-2xl bg-slate-200 py-1 px-2 font-bold text-black"
+          : "rounded-2xl py-1 px-2 font-bold text-slate-200"
       }
       onClick={() => props.setFilter(filterValue)}
     >

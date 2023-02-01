@@ -13,6 +13,9 @@
     height: calc(100vh - 5rem);
     max-height: calc(100vh - 5rem);
   }
+  .line-height-0 {
+    line-height: 0;
+  }
 }
 a.active {
   font-weight: 700;

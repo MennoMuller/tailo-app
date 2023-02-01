@@ -14,7 +14,7 @@ const DashTasks = (props) => {
           See all
         </Link>
       </div>
-      <div className="flex shrink grow flex-col overflow-y-auto overflow-x-hidden">
+      <div className="flex shrink grow flex-col gap-2 overflow-y-auto overflow-x-hidden">
         {props.tasks
           .filter((task) => !task.complete)
           .sort(props.compareTasks)

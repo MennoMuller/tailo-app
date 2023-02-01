@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
-//import "./App.css";
 
 import Header from "./components/Header";
 import Dashboard from "./pages/Dashboard";
@@ -194,7 +193,8 @@ const App = () => {
   }, [geo]);
 
   return (
-    <div>
+    <>
+      <div className="fixed -z-50 h-screen w-screen bg-orange-100"></div>
       <Header date={date} tick={tick} />
       <div className="flex flex-col sm:flex-row">
         <Sidebar avatar={avatar} username={user.username} />
@@ -247,7 +247,7 @@ const App = () => {
           />
         </Routes>
       </div>
-    </div>
+    </>
   );
 };
 
