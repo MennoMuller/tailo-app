@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import ClickAwayListener from "react-click-away-listener";
 import ModifySiteMenu from "./ModifySiteMenu";
-import "./ListItem.css";
+//import "./ListItem.css";
 
 const SiteItem = (props) => {
   const [popup, setPopup] = useState(false);
   const [menu, setMenu] = useState(false);
   return (
-    <div className="list-item site-item">
+    <div className="relative grid max-w-full auto-cols-auto grid-rows-2 rounded-lg  p-2">
       <a
-        className="site-box"
+        className="col-start-1 col-end-1 row-start-1 row-end-1 w-fit hover:underline"
         href={
           props.url.includes("http")
             ? props.url
@@ -21,32 +21,34 @@ const SiteItem = (props) => {
         target="_blank"
       >
         <img
-          className="site-icon"
+          className="inline h-5 w-5 object-cover"
           src={
             props.icon
               ? props.icon
               : props.iconGetter(props.url)
           }
         />
-        <h4 className="task-label">{props.name}</h4>
+        <h4 className="ml-3 inline font-bold">
+          {props.name}
+        </h4>
       </a>
-      <p className="site-description">
+      <p className=" col-start-1 col-end-3 row-start-2 row-end-2 max-w-full">
         {props.description}
       </p>
       <button
-        className="menu-button"
+        className="col-start-2 col-end-2 row-start-1 row-end-1 flex h-2 w-6 cursor-pointer items-center justify-center self-start justify-self-end pb-3 align-text-top text-xl font-bold"
         onClick={() => setPopup(true)}
       >
-        <div className="meatballs-menu"></div>
+        &hellip;
       </button>
       {popup && (
         <ClickAwayListener
           onClickAway={() => setPopup(false)}
         >
-          <div className="item-menu">
+          <div className="absolute z-10 col-start-2 col-end-2 row-start-1 row-end-1 mt-3 w-max list-none justify-self-end overflow-hidden rounded-lg bg-black">
             <li>
               <button
-                className="menu-option"
+                className="w-full cursor-pointer py-1 px-2 text-white hover:bg-slate-800"
                 onClick={() =>
                   console.log(
                     "delete website " + props.index
@@ -58,7 +60,7 @@ const SiteItem = (props) => {
             </li>
             <li>
               <button
-                className="menu-option"
+                className="cursor-pointer px-2 py-1 text-white hover:bg-slate-800"
                 onClick={() => {
                   setMenu(true);
                   setPopup(false);

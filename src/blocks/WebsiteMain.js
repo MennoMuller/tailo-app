@@ -6,9 +6,11 @@ import SiteItem from "../components/SiteItem";
 const WebsiteMain = (props) => {
   const [menu, setMenu] = useState(false);
   return (
-    <div className="grid-item item-a">
-      <h2>My favorite websites</h2>
-      <div className="list-wrapper">
+    <div className="col-start-1 col-end-1 row-start-1 row-end-3 flex max-w-full flex-col rounded-2xl bg-white p-5 sm:max-h-full">
+      <h2 className="text-2xl font-bold">
+        My favorite websites
+      </h2>
+      <div className="flex shrink grow flex-col overflow-y-auto overflow-x-hidden">
         {props.websites
           .sort((a, b) => b.clicks - a.clicks)
           .map((site) => (
@@ -24,7 +26,7 @@ const WebsiteMain = (props) => {
           ))}
       </div>
       <button
-        className="add-button"
+        className="mt-2 flex h-12 w-12 shrink-0 flex-col items-center justify-center rounded-full bg-black pb-3 text-5xl text-white"
         onClick={() => setMenu(true)}
       >
         +

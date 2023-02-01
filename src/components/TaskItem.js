@@ -26,7 +26,7 @@ const TaskItem = (props) => {
           : "relative grid max-w-full auto-cols-auto grid-rows-2 rounded-lg border border-solid border-black p-2"
       }
     >
-      <div className="col-start-1 col-end-3 row-start-1 row-end-3 flex flex-col justify-end overflow-hidden">
+      <div className="col-start-1 col-end-1 row-start-1 row-end-3 flex flex-col justify-end overflow-hidden">
         <span className="text-sm text-slate-500">
           {props.category}
         </span>

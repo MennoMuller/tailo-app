@@ -8,9 +8,9 @@ const TasksMain = (props) => {
   const [filter, setFilter] = useState(null);
   const [menu, setMenu] = useState(false);
   return (
-    <div className="col-start-1 col-end-1 row-start-1 row-end-3 flex max-h-full max-w-full flex-col rounded-2xl bg-white p-5">
+    <div className="col-start-1 col-end-1 row-start-1 row-end-3 flex max-w-full flex-col rounded-2xl bg-white p-5 sm:max-h-full">
       <h2 className="text-2xl font-bold">My tasks</h2>
-      <div className="my-2 flex flex-row items-center justify-between">
+      <div className="my-2 flex h-max flex-row items-center justify-between overflow-x-auto overflow-y-hidden">
         <FilterButton
           filter={filter}
           myFilter="All tasks"

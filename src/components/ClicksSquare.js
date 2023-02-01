@@ -3,7 +3,7 @@ import React from "react";
 const ClicksSquare = (props) => {
   return (
     <a
-      className="square"
+      className="mx-2 flex h-24 w-24 shrink-0 flex-col items-center justify-center overflow-hidden rounded-2xl bg-white shadow-md"
       href={
         props.url.includes("http")
           ? props.url
@@ -15,14 +15,16 @@ const ClicksSquare = (props) => {
       target="_blank"
     >
       <img
-        className="square-icon"
+        className="h-10 w-10 object-cover"
         src={
           props.icon
             ? props.icon
             : props.iconGetter(props.url)
         }
       />
-      <span className="square-number">{props.clicks}</span>
+      <span className="text-lg font-bold">
+        {props.clicks}
+      </span>
     </a>
   );
 };

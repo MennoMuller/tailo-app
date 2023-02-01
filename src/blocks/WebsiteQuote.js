@@ -16,11 +16,13 @@ const WebsiteQuote = () => {
   }, []);
 
   return (
-    <div className="grid-item item-c blue">
-      <h2>Random quote of the day</h2>
-      <h3 className="quote">"{quote.quote}"</h3>
+    <div className="col-start-2 col-end-2 row-start-2 row-end-2 flex max-w-full flex-col rounded-2xl bg-blue-600 p-5 text-white sm:max-h-full">
+      <h2 className="text-2xl font-bold">
+        Random quote of the day
+      </h2>
+      <h3 className=" font-bold">"{quote.quote}"</h3>
       <p className="quote-author">-{quote.author}</p>
-      <span className="tss-span">
+      <span className=" z-50 mt-auto inline-flex font-bold">
         <img
           src="https://theysaidso.com/branding/theysaidso.png"
           height="10"
@@ -30,7 +32,7 @@ const WebsiteQuote = () => {
         <a
           href="https://theysaidso.com"
           title="Powered by quotes from theysaidso.com"
-          className="tss-a"
+          className="ml-1 align-middle text-xs text-blue-300"
         >
           They Said So®
         </a>
