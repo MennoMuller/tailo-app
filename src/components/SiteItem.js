@@ -9,7 +9,7 @@ const SiteItem = (props) => {
   return (
     <div className="relative grid max-w-full auto-cols-auto grid-rows-2 rounded-lg  p-2">
       <a
-        className="col-start-1 col-end-1 row-start-1 row-end-1 w-fit hover:underline"
+        className="col-start-1 col-end-1 row-start-1 row-end-1 flex w-fit flex-row hover:underline"
         href={
           props.url.includes("http")
             ? props.url
@@ -20,14 +20,16 @@ const SiteItem = (props) => {
         }}
         target="_blank"
       >
-        <img
-          className="inline h-5 w-5 object-cover"
-          src={
-            props.icon
-              ? props.icon
-              : props.iconGetter(props.url)
-          }
-        />
+        <div className="inline h-7 w-7 shrink-0 p-1 dark:rounded-md dark:bg-white dark:bg-opacity-60">
+          <img
+            className="h-5 w-5 object-cover"
+            src={
+              props.icon
+                ? props.icon
+                : props.iconGetter(props.url)
+            }
+          />
+        </div>
         <h4 className="ml-3 inline font-bold">
           {props.name}
         </h4>

@@ -16,7 +16,7 @@ const WebsiteQuote = () => {
   }, []);
 
   return (
-    <div className="col-start-2 col-end-2 row-start-2 row-end-2 flex max-w-full flex-col rounded-2xl bg-blue-600 p-5 text-white sm:max-h-full">
+    <div className="col-start-2 col-end-2 row-start-2 row-end-2 flex max-w-full flex-col rounded-2xl bg-blue-600 p-5 text-white dark:bg-indigo-900 sm:max-h-full">
       <h2 className="text-2xl font-bold">
         Random quote of the day
       </h2>
