@@ -6,7 +6,8 @@ const WeatherLocation = (props) => {
       <h2 className="text-2xl font-bold">Location</h2>
       <p className="text-4xl font-bold">{props.city}</p>
       <p>
-        {props.state}, {props.country}
+        {props.state ? props.state + ", " : ""}
+        {props.country}
       </p>
       <button
         className="colorful-background self-end rounded-3xl px-3 py-2 text-white dark:border dark:border-solid dark:border-white"

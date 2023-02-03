@@ -111,6 +111,9 @@ const App = () => {
   };
 
   const handleLocationUpdate = (city) => {
+    if (city === null) {
+      return;
+    }
     fetch(
       "http://api.openweathermap.org/geo/1.0/direct?q=" +
         city +
@@ -119,7 +122,18 @@ const App = () => {
     )
       .then((response) => response.json())
       .then((data) => {
-        setGeo(data[0]);
+        if (data[0]) {
+          setGeo(data[0]);
+        } else {
+          handleLocationUpdate(
+            prompt(
+              'Error: city "' +
+                city +
+                "\" not recognized. Please ensure it's spelled correctly.",
+              city
+            )
+          );
+        }
       })
 
       .catch((error) => {
@@ -170,7 +184,9 @@ const App = () => {
     )
       .then((response) => response.json())
       .then((data) => {
-        handleLocationUpdate(data[0].name);
+        if (data[0]) {
+          handleLocationUpdate(data[0].name);
+        }
       });
   };
 
