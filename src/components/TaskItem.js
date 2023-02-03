@@ -2,15 +2,17 @@ import React from "react";
 import { useState } from "react";
 import ClickAwayListener from "react-click-away-listener";
 import { TimeInterval } from "time-interval-js";
+import { isPast } from "date-fns";
 import ModifyTaskMenu from "./ModifyTaskMenu";
 
 const TaskItem = (props) => {
-  let timeLeft;
+  let timeLeft, deadlineDate;
   if (props.deadline_date) {
+    deadlineDate = new Date(props.deadline_date);
     if (props.date) {
       timeLeft = TimeInterval.fromTimeBetweenTwoDates(
         props.date,
-        props.deadline_date
+        deadlineDate
       );
     }
   }
@@ -20,7 +22,7 @@ const TaskItem = (props) => {
   return (
     <div
       className={
-        !props.complete && timeLeft.inDays < 0
+        !props.complete && timeLeft && isPast(deadlineDate)
           ? "relative grid max-w-full auto-cols-auto grid-rows-2 rounded-lg border border-solid border-black bg-red-400 p-2 dark:border-white dark:bg-red-800"
           : "relative grid max-w-full auto-cols-auto grid-rows-2 rounded-lg border border-solid border-black p-2 dark:border-white"
       }
@@ -38,9 +40,10 @@ const TaskItem = (props) => {
               <span
                 className={
                   "mr-2 flex h-5 w-5 items-center justify-center rounded-full " +
-                  (props.deadline_date &&
-                  timeLeft.inWeeks <= 1
-                    ? timeLeft.inDays <= 1
+                  ((timeLeft && timeLeft.inWeeks() <= 1) ||
+                  isPast(deadlineDate)
+                    ? isPast(deadlineDate) ||
+                      timeLeft.inDays() <= 1
                       ? "bg-red-500 font-bold text-white"
                       : "bg-yellow-400 font-bold text-white"
                     : "bg-green-500 text-green-500")
@@ -49,15 +52,18 @@ const TaskItem = (props) => {
                 !
               </span>
               <span className="text-base">
-                {props.deadline_date
-                  ? timeLeft.inDays < 0
-                    ? "Overdue"
+                {timeLeft
+                  ? isPast(deadlineDate)
+                    ? Math.round(timeLeft.inDays()) +
+                      " days overdue"
                     : "Deadline " +
-                      (timeLeft.inDays <= 1
+                      (timeLeft.inDays() <= 1
                         ? "today"
-                        : timeLeft.inWeeks <= 1
+                        : timeLeft.inWeeks() <= 1
                         ? "this week"
-                        : "in " + timeLeft.inDays + " days")
+                        : "in " +
+                          Math.round(timeLeft.inDays()) +
+                          " days")
                   : "No deadline"}
               </span>
             </div>

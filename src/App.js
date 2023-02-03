@@ -85,7 +85,14 @@ const App = () => {
   };
 
   const toggleComplete = (index) => {
-    console.log(index + " completeness toggle");
+    let tasksList = tasks.slice();
+    let taskToModify = tasksList.find(
+      (task) => task.id === index
+    );
+    taskToModify.complete = !taskToModify.complete;
+    setTasks(tasksList);
+
+    //TODO: Database update
   };
 
   const tick = () => {
@@ -111,12 +118,8 @@ const App = () => {
   };
 
   const handleWebsiteClick = (index) => {
-    console.log(index);
     let websitesList = websites.slice();
     websitesList.find((site) => site.id === index).clicks++;
-    console.log(
-      websitesList.find((site) => site.id === index)
-    );
     setWebsites(websitesList);
 
     //TODO: Update database with new click count
