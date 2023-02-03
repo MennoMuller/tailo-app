@@ -13,9 +13,7 @@
     height: calc(100vh - 5rem);
     max-height: calc(100vh - 5rem);
   }
-  .line-height-0 {
-    line-height: 0;
-  }
+
   .page-shadow {
     box-shadow: 0px 0px 0px max(50vw, 50vh)
       rgba(0, 0, 0, 0.5);
@@ -25,9 +23,99 @@ a.active {
   font-weight: 700;
   background-color: rgb(243, 243, 243);
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 1px;
+}
+
+:hover::-webkit-scrollbar {
+  width: 10px;
+  position: fixed;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgb(219, 219, 219);
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #272727;
+  border-radius: 5px;
+  width: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #3b3b3b;
+}
+
+::-webkit-scrollbar-button:decrement:start,
+::-webkit-scrollbar-button:increment:end {
+  border-style: solid;
+  height: 16px;
+  width: 16px;
+}
+
+/* Up */
+::-webkit-scrollbar-button:decrement:start {
+  border-width: 0 7px 14px 7px;
+  border-color: transparent transparent #272727 transparent;
+}
+
+::-webkit-scrollbar-button:decrement:start:hover {
+  border-color: transparent transparent #3b3b3b transparent;
+}
+
+/* Down */
+::-webkit-scrollbar-button:increment:end {
+  border-width: 14px 7px 0 7px;
+  border-color: #272727 transparent transparent transparent;
+}
+
+::-webkit-scrollbar-button:increment:end:hover {
+  border-color: #3b3b3b transparent transparent transparent;
+}
 @media (prefers-color-scheme: dark) {
   a.active {
     font-weight: 700;
     background-color: rgb(61, 61, 61);
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #272727;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+  /* Up */
+  ::-webkit-scrollbar-button:decrement:start {
+    border-color: transparent transparent #888 transparent;
+  }
+
+  ::-webkit-scrollbar-button:decrement:start:hover {
+    border-color: transparent transparent #555 transparent;
+  }
+
+  /* Down */
+  ::-webkit-scrollbar-button:increment:end {
+    border-color: #888 transparent transparent transparent;
+  }
+
+  ::-webkit-scrollbar-button:increment:end:hover {
+    border-color: #555 transparent transparent transparent;
   }
 }
