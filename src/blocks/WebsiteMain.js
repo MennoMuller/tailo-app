@@ -22,6 +22,7 @@ const WebsiteMain = (props) => {
               description={site.description}
               url={site.url}
               iconGetter={props.iconGetter}
+              onClick={props.onClick}
             />
           ))}
       </div>

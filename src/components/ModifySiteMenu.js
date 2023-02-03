@@ -2,7 +2,7 @@ import React from "react";
 
 const ModifySiteMenu = (props) => {
   return (
-    <div className="page-shadow fixed bottom-1/2 right-1/2 z-10 flex translate-x-1/2 translate-y-1/2 flex-col rounded-2xl bg-white p-7 dark:border dark:border-solid dark:border-white dark:bg-black dark:text-white">
+    <div className="page-shadow fixed bottom-1/2 right-1/2 z-50 flex translate-x-1/2 translate-y-1/2 flex-col rounded-2xl bg-white p-7 dark:border dark:border-solid dark:border-white dark:bg-black dark:text-white">
       <h2 className="mb-3 text-2xl font-bold">
         {props.modify ? "Modify website" : "Add a website"}
       </h2>

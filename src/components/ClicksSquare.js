@@ -10,7 +10,7 @@ const ClicksSquare = (props) => {
           : "http://" + props.url
       }
       onClick={() => {
-        console.log(props.index + " was clicked");
+        props.onClick(props.index);
       }}
       target="_blank"
     >

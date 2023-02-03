@@ -12,10 +12,12 @@ const WebsiteClicks = (props) => {
           .map((site) => (
             <ClicksSquare
               key={site.id}
+              index={site.id}
               url={site.url}
               icon={site.icon}
               clicks={site.clicks}
               iconGetter={props.iconGetter}
+              onClick={props.onClick}
             />
           ))}
       </div>

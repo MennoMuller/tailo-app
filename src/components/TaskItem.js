@@ -1,17 +1,16 @@
 import React from "react";
 import { useState } from "react";
 import ClickAwayListener from "react-click-away-listener";
+import { TimeInterval } from "time-interval-js";
 import ModifyTaskMenu from "./ModifyTaskMenu";
-//import "./ListItem.css";
 
 const TaskItem = (props) => {
   let timeLeft;
   if (props.deadline_date) {
-    let deadlineNr = Date.parse(props.deadline_date);
     if (props.date) {
-      timeLeft = Math.ceil(
-        (deadlineNr - props.date.valueOf()) /
-          (1000 * 3600 * 24)
+      timeLeft = TimeInterval.fromTimeBetweenTwoDates(
+        props.date,
+        props.deadline_date
       );
     }
   }
@@ -21,7 +20,7 @@ const TaskItem = (props) => {
   return (
     <div
       className={
-        !props.complete && timeLeft < 0
+        !props.complete && timeLeft.inDays < 0
           ? "relative grid max-w-full auto-cols-auto grid-rows-2 rounded-lg border border-solid border-black bg-red-400 p-2 dark:border-white dark:bg-red-800"
           : "relative grid max-w-full auto-cols-auto grid-rows-2 rounded-lg border border-solid border-black p-2 dark:border-white"
       }
@@ -39,8 +38,9 @@ const TaskItem = (props) => {
               <span
                 className={
                   "mr-2 flex h-5 w-5 items-center justify-center rounded-full " +
-                  (props.deadline_date && timeLeft < 7
-                    ? timeLeft < 1
+                  (props.deadline_date &&
+                  timeLeft.inWeeks <= 1
+                    ? timeLeft.inDays <= 1
                       ? "bg-red-500 font-bold text-white"
                       : "bg-yellow-400 font-bold text-white"
                     : "bg-green-500 text-green-500")
@@ -50,14 +50,14 @@ const TaskItem = (props) => {
               </span>
               <span className="text-base">
                 {props.deadline_date
-                  ? timeLeft < 0
+                  ? timeLeft.inDays < 0
                     ? "Overdue"
                     : "Deadline " +
-                      (timeLeft < 1
+                      (timeLeft.inDays <= 1
                         ? "today"
-                        : timeLeft < 7
+                        : timeLeft.inWeeks <= 1
                         ? "this week"
-                        : "in " + timeLeft + " days")
+                        : "in " + timeLeft.inDays + " days")
                   : "No deadline"}
               </span>
             </div>

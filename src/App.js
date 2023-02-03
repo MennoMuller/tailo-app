@@ -110,6 +110,18 @@ const App = () => {
       .then((data) => setWebsites(data));
   };
 
+  const handleWebsiteClick = (index) => {
+    console.log(index);
+    let websitesList = websites.slice();
+    websitesList.find((site) => site.id === index).clicks++;
+    console.log(
+      websitesList.find((site) => site.id === index)
+    );
+    setWebsites(websitesList);
+
+    //TODO: Update database with new click count
+  };
+
   const handleLocationUpdate = (city) => {
     if (city === null) {
       return;
@@ -245,6 +257,7 @@ const App = () => {
               <Websites
                 websites={websites}
                 iconGetter={getDefaultIconUrl}
+                onClick={handleWebsiteClick}
               />
             }
           />

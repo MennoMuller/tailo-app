@@ -13,10 +13,12 @@ const Websites = (props) => {
         <WebsiteMain
           websites={props.websites}
           iconGetter={props.iconGetter}
+          onClick={props.onClick}
         />
         <WebsiteClicks
           websites={props.websites}
           iconGetter={props.iconGetter}
+          onClick={props.onClick}
         />
         <WebsiteQuote />
       </div>

@@ -27,25 +27,25 @@ a.active {
 /* width */
 ::-webkit-scrollbar {
   width: 1px;
+  height: 1px;
 }
 
 :hover::-webkit-scrollbar {
   width: 10px;
-  position: fixed;
+  height: 10px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
   background: rgb(219, 219, 219);
-  margin-top: 5px;
-  margin-bottom: 5px;
-  border-radius: 5px;
+  margin: 5px;
+  border-radius: 10px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #272727;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 /* Handle on hover */
@@ -61,24 +61,45 @@ a.active {
 }
 
 /* Up */
-::-webkit-scrollbar-button:decrement:start {
-  border-width: 0 7px 14px 7px;
+::-webkit-scrollbar-button:vertical:decrement:start {
+  border-width: 0 5px 10px 5px;
   border-color: transparent transparent #272727 transparent;
 }
 
-::-webkit-scrollbar-button:decrement:start:hover {
+::-webkit-scrollbar-button:vertical:decrement:start:hover {
   border-color: transparent transparent #3b3b3b transparent;
 }
 
 /* Down */
-::-webkit-scrollbar-button:increment:end {
-  border-width: 14px 7px 0 7px;
+::-webkit-scrollbar-button:vertical:increment:end {
+  border-width: 10px 5px 0 5px;
   border-color: #272727 transparent transparent transparent;
 }
 
-::-webkit-scrollbar-button:increment:end:hover {
+::-webkit-scrollbar-button:vertical:increment:end:hover {
   border-color: #3b3b3b transparent transparent transparent;
 }
+
+/* Left */
+::-webkit-scrollbar-button:horizontal:decrement:start {
+  border-width: 5px 10px 5px 0;
+  border-color: transparent #272727 transparent transparent;
+}
+
+::-webkit-scrollbar-button:horizontal:decrement:start:hover {
+  border-color: transparent #3b3b3b transparent transparent;
+}
+
+/* Right */
+::-webkit-scrollbar-button:horizontal:increment:end {
+  border-width: 5px 0 5px 10px;
+  border-color: transparent transparent transparent #272727;
+}
+
+::-webkit-scrollbar-button:horizontal:increment:end:hover {
+  border-color: transparent transparent transparent #3b3b3b;
+}
+
 @media (prefers-color-scheme: dark) {
   a.active {
     font-weight: 700;
@@ -101,20 +122,38 @@ a.active {
   }
 
   /* Up */
-  ::-webkit-scrollbar-button:decrement:start {
+  ::-webkit-scrollbar-button:vertical:decrement:start {
     border-color: transparent transparent #888 transparent;
   }
 
-  ::-webkit-scrollbar-button:decrement:start:hover {
+  ::-webkit-scrollbar-button:vertical:decrement:start:hover {
     border-color: transparent transparent #555 transparent;
   }
 
   /* Down */
-  ::-webkit-scrollbar-button:increment:end {
+  ::-webkit-scrollbar-button:vertical:increment:end {
     border-color: #888 transparent transparent transparent;
   }
 
-  ::-webkit-scrollbar-button:increment:end:hover {
+  ::-webkit-scrollbar-button:vertical:increment:end:hover {
     border-color: #555 transparent transparent transparent;
+  }
+
+  /* Left */
+  ::-webkit-scrollbar-button:horizontal:decrement:start {
+    border-color: transparent #888 transparent transparent;
+  }
+
+  ::-webkit-scrollbar-button:horizontal:decrement:start:hover {
+    border-color: transparent #555 transparent transparent;
+  }
+
+  /* Right */
+  ::-webkit-scrollbar-button:horizontal:increment:end {
+    border-color: transparent transparent transparent #888;
+  }
+
+  ::-webkit-scrollbar-button:horizontal:increment:end:hover {
+    border-color: transparent transparent transparent #555;
   }
 }
