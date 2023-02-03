@@ -8,7 +8,10 @@ import ModifyTaskMenu from "./ModifyTaskMenu";
 const TaskItem = (props) => {
   let timeLeft, deadlineDate;
   if (props.deadline_date) {
-    deadlineDate = new Date(props.deadline_date);
+    let deadlineTime = props.deadline_time || "23:59:59";
+    deadlineDate = new Date(
+      props.deadline_date + " " + deadlineTime
+    );
     if (props.date) {
       timeLeft = TimeInterval.fromTimeBetweenTwoDates(
         props.date,
@@ -92,9 +95,7 @@ const TaskItem = (props) => {
             <li>
               <button
                 className="w-full cursor-pointer py-1 px-2 text-white hover:bg-slate-800"
-                onClick={() =>
-                  console.log("delete task " + props.index)
-                }
+                onClick={() => props.onDelete(props.index)}
               >
                 Delete task
               </button>
@@ -126,6 +127,10 @@ const TaskItem = (props) => {
               deadline_time={props.deadline_time}
               date={props.date}
               modify={true}
+              onSubmit={(results) => {
+                props.onModify(props.index, results);
+                setMenu(false);
+              }}
             />
           </div>
         </ClickAwayListener>

@@ -41,7 +41,7 @@ const App = () => {
     }
     const baseEnd = url.indexOf("/", secondPoint);
     let urlBase =
-      baseEnd == -1 ? url : url.substring(0, baseEnd);
+      baseEnd === -1 ? url : url.substring(0, baseEnd);
     if (!urlBase.includes("http")) {
       urlBase = "http://" + urlBase;
     }
@@ -85,7 +85,7 @@ const App = () => {
   };
 
   const toggleComplete = (index) => {
-    let tasksList = tasks.slice();
+    let tasksList = [...tasks];
     let taskToModify = tasksList.find(
       (task) => task.id === index
     );
@@ -118,11 +118,115 @@ const App = () => {
   };
 
   const handleWebsiteClick = (index) => {
-    let websitesList = websites.slice();
+    let websitesList = [...websites];
     websitesList.find((site) => site.id === index).clicks++;
     setWebsites(websitesList);
 
     //TODO: Update database with new click count
+  };
+
+  const handleModifyTask = (index, props) => {
+    const tasksList = [...tasks];
+    const taskToModify = tasksList.find(
+      (task) => task.id === index
+    );
+    let taskModified = {
+      ...taskToModify,
+      name: props.name,
+      category: props.category,
+      deadline_date: props.deadline_date,
+      deadline_time: props.deadline_time
+    };
+    tasksList[tasksList.indexOf(taskToModify)] =
+      taskModified;
+
+    setTasks(tasksList);
+
+    //TODO: Database update
+  };
+
+  const handleDeleteTask = (index) => {
+    let tasksList = [...tasks];
+    tasksList = tasksList.filter(
+      (task) => task.id !== index
+    );
+    setTasks(tasksList);
+
+    //TODO: Database update
+  };
+
+  const getNextTaskId = () => {
+    let id = 1;
+    tasks.forEach((task) => {
+      if (task.id === id) {
+        id++;
+      }
+    });
+    return id;
+  };
+
+  const handleAddTask = (props) => {
+    tasks.push({
+      id: getNextTaskId(),
+      name: props.name,
+      category: props.category,
+      deadline_date: props.deadline_date,
+      deadline_time: props.deadline_time,
+      complete: false,
+      user_id: user.id
+    });
+  };
+
+  const handleModifyWebsite = (index, props) => {
+    const sitesList = [...websites];
+    const siteToModify = sitesList.find(
+      (site) => site.id === index
+    );
+    let siteModified = {
+      ...siteToModify,
+      url: props.url,
+      name: props.name,
+      icon: props.icon,
+      description: props.description
+    };
+    sitesList[sitesList.indexOf(siteToModify)] =
+      siteModified;
+
+    setWebsites(sitesList);
+
+    //TODO: Database update
+  };
+
+  const handleDeleteWebsite = (index) => {
+    let sitesList = [...websites];
+    sitesList = sitesList.filter(
+      (site) => site.id !== index
+    );
+    setWebsites(sitesList);
+
+    //TODO: Database update
+  };
+
+  const getNextWebsiteId = () => {
+    let id = 1;
+    websites.forEach((site) => {
+      if (site.id === id) {
+        id++;
+      }
+    });
+    return id;
+  };
+
+  const handleAddWebsite = (props) => {
+    websites.push({
+      id: getNextWebsiteId(),
+      url: props.url,
+      name: props.name,
+      icon: props.icon,
+      description: props.description,
+      clicks: 0,
+      user_id: user.id
+    });
   };
 
   const handleLocationUpdate = (city) => {
@@ -240,6 +344,10 @@ const App = () => {
                 date={date}
                 compareTasks={compareTasks}
                 iconGetter={getDefaultIconUrl}
+                onClick={handleWebsiteClick}
+                onModify={handleModifyTask}
+                onDelete={handleDeleteTask}
+                toggleComplete={toggleComplete}
               />
             }
           />
@@ -251,6 +359,9 @@ const App = () => {
                 toggleComplete={toggleComplete}
                 date={date}
                 compareTasks={compareTasks}
+                onModify={handleModifyTask}
+                onDelete={handleDeleteTask}
+                onAdd={handleAddTask}
               />
             }
           />
@@ -261,6 +372,9 @@ const App = () => {
                 websites={websites}
                 iconGetter={getDefaultIconUrl}
                 onClick={handleWebsiteClick}
+                onModify={handleModifyWebsite}
+                onDelete={handleDeleteWebsite}
+                onAdd={handleAddWebsite}
               />
             }
           />

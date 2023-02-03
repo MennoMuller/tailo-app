@@ -14,10 +14,14 @@ const Dashboard = (props) => {
           tasks={props.tasks}
           date={props.date}
           compareTasks={props.compareTasks}
+          onModify={props.onModify}
+          onDelete={props.onDelete}
+          toggleComplete={props.toggleComplete}
         />
         <DashWebsites
           websites={props.websites}
           iconGetter={props.iconGetter}
+          onClick={props.onClick}
         />
         <DashWeather
           temperature={props.weather.main.temp}

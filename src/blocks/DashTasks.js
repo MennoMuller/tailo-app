@@ -30,6 +30,8 @@ const DashTasks = (props) => {
               deadline_date={task.deadline_date}
               deadline_time={task.deadline_time}
               date={props.date}
+              onModify={props.onModify}
+              onDelete={props.onDelete}
             />
           ))}
       </div>

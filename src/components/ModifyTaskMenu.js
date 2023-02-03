@@ -1,27 +1,56 @@
-import React from "react";
+import React, { useState } from "react";
 
 const ModifyTaskMenu = (props) => {
+  const [name, setName] = useState(props.name);
+  const [category, setCategory] = useState(props.category);
+  const [deadline_date, setDeadlineDate] = useState(
+    props.deadline_date
+  );
+  const [deadline_time, setDeadlineTime] = useState(
+    props.deadline_time
+  );
+
   return (
     <div className="page-shadow fixed bottom-1/2 right-1/2 z-50 flex translate-x-1/2 translate-y-1/2 flex-col rounded-2xl bg-white p-7 dark:border dark:border-solid dark:border-white dark:bg-black dark:text-white">
       <h2 className="mb-3 text-2xl font-bold">
         {props.modify ? "Modify task" : "Add a task"}
       </h2>
-      <form className="flex flex-col">
+      <form
+        className="flex flex-col"
+        onSubmit={(e) => {
+          console.log(name);
+          console.log(category);
+          console.log(deadline_date);
+          console.log(deadline_time);
+
+          props.onSubmit({
+            name: name,
+            category: category,
+            deadline_date: deadline_date,
+            deadline_time: deadline_time
+          });
+          e.preventDefault();
+        }}
+      >
         <div className="grid shrink-0 auto-rows-fr grid-cols-[300px_300px] gap-2">
           <div className="col-start-1 col-end-3 row-start-1 row-end-1 flex flex-col">
             <label
               htmlFor="name"
               className="absolute ml-2 text-sm text-slate-500"
             >
-              Name task{" "}
+              Name task
               <span className="text-red-500">*</span>
             </label>
             <input
               type="text"
               id="name"
               name="name"
-              value={props.name}
+              value={name}
               className="h-full rounded bg-slate-300 p-2 pt-4 dark:bg-slate-800"
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
+              required
             />
           </div>
           <div className="col-start-1 col-end-1 row-start-2 row-end-2 flex flex-col">
@@ -36,28 +65,31 @@ const ModifyTaskMenu = (props) => {
               id="category"
               name="category"
               className="h-full rounded bg-slate-300 p-2 pt-4 dark:bg-slate-800"
+              onChange={(e) => {
+                setCategory(e.target.value);
+              }}
             >
               <option
                 value="School"
-                selected={props.category == "School"}
+                selected={category === "School"}
               >
                 School
               </option>
               <option
                 value="Social"
-                selected={props.category == "Social"}
+                selected={category === "Social"}
               >
                 Social
               </option>
               <option
                 value="Home"
-                selected={props.category == "Home"}
+                selected={category === "Home"}
               >
                 Home
               </option>
               <option
                 value="Misc"
-                selected={props.category == "Misc"}
+                selected={category === "Misc"}
               >
                 Misc
               </option>
@@ -75,8 +107,11 @@ const ModifyTaskMenu = (props) => {
                 type="date"
                 id="deadline_date"
                 name="deadline_date"
-                value={props.deadline_date}
+                value={deadline_date}
                 className="h-full w-full bg-transparent dark:text-black dark:invert"
+                onChange={(e) => {
+                  setDeadlineDate(e.target.value);
+                }}
               />
             </div>
           </div>
@@ -92,8 +127,11 @@ const ModifyTaskMenu = (props) => {
                 type="time"
                 id="deadline_time"
                 name="deadline_time"
-                value={props.deadline_time}
+                value={deadline_time}
                 className="h-full w-full bg-transparent dark:text-black dark:invert"
+                onChange={(e) => {
+                  setDeadlineTime(e.target.value);
+                }}
               />
             </div>
           </div>

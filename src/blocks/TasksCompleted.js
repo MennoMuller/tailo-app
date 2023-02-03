@@ -17,6 +17,10 @@ const TasksCompleted = (props) => {
               complete={task.complete}
               index={task.id}
               toggleComplete={props.toggleComplete}
+              deadline_date={task.deadline_date}
+              deadline_time={task.deadline_time}
+              onModify={props.onModify}
+              onDelete={props.onDelete}
             />
           ))}
       </div>

@@ -15,6 +15,9 @@ const Tasks = (props) => {
           toggleComplete={props.toggleComplete}
           date={props.date}
           compareTasks={props.compareTasks}
+          onModify={props.onModify}
+          onDelete={props.onDelete}
+          onAdd={props.onAdd}
         />
         <TasksProgress
           tasksLeft={
@@ -48,6 +51,8 @@ const Tasks = (props) => {
           tasks={props.tasks}
           toggleComplete={props.toggleComplete}
           compareTasks={props.compareTasks}
+          onModify={props.onModify}
+          onDelete={props.onDelete}
         />
       </div>
     </div>

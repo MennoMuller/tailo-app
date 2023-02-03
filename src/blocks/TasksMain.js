@@ -41,7 +41,7 @@ const TasksMain = (props) => {
         {(filter != null
           ? props.tasks
               .filter((task) => !task.complete)
-              .filter((task) => task.category == filter)
+              .filter((task) => task.category === filter)
           : props.tasks.filter((task) => !task.complete)
         )
           .sort(props.compareTasks)
@@ -56,6 +56,8 @@ const TasksMain = (props) => {
               deadline_date={task.deadline_date}
               deadline_time={task.deadline_time}
               date={props.date}
+              onModify={props.onModify}
+              onDelete={props.onDelete}
             />
           ))}
       </div>
@@ -70,7 +72,13 @@ const TasksMain = (props) => {
           onClickAway={() => setMenu(false)}
         >
           <div>
-            <ModifyTaskMenu modify={false} />
+            <ModifyTaskMenu
+              modify={false}
+              onSubmit={(results) => {
+                props.onAdd(results);
+                setMenu(false);
+              }}
+            />
           </div>
         </ClickAwayListener>
       )}

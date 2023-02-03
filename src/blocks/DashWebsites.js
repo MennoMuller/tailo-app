@@ -28,7 +28,7 @@ const DashWebsites = (props) => {
                   : "http://" + site.url
               }
               onClick={() => {
-                console.log(site.id + " was clicked");
+                props.onClick(site.id);
               }}
               key={site.id}
             >
