@@ -46,7 +46,6 @@ a.active {
 ::-webkit-scrollbar-thumb {
   background: #272727;
   border-radius: 5px;
-  width: 5px;
 }
 
 /* Handle on hover */
