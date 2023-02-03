@@ -128,7 +128,7 @@ const App = () => {
     const taskToModify = tasksList.find(
       (task) => task.id === index
     );
-    let taskModified = {
+    const taskModified = {
       ...taskToModify,
       name: props.name,
       category: props.category,
