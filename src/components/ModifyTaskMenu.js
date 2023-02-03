@@ -18,11 +18,6 @@ const ModifyTaskMenu = (props) => {
       <form
         className="flex flex-col"
         onSubmit={(e) => {
-          console.log(name);
-          console.log(category);
-          console.log(deadline_date);
-          console.log(deadline_time);
-
           props.onSubmit({
             name: name,
             category: category,

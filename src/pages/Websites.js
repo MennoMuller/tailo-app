@@ -14,6 +14,9 @@ const Websites = (props) => {
           websites={props.websites}
           iconGetter={props.iconGetter}
           onClick={props.onClick}
+          onModify={props.onModify}
+          onDelete={props.onDelete}
+          onAdd={props.onAdd}
         />
         <WebsiteClicks
           websites={props.websites}

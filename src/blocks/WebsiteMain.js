@@ -23,6 +23,8 @@ const WebsiteMain = (props) => {
               url={site.url}
               iconGetter={props.iconGetter}
               onClick={props.onClick}
+              onModify={props.onModify}
+              onDelete={props.onDelete}
             />
           ))}
       </div>
@@ -37,7 +39,13 @@ const WebsiteMain = (props) => {
           onClickAway={() => setMenu(false)}
         >
           <div>
-            <ModifySiteMenu modify={false} />
+            <ModifySiteMenu
+              modify={false}
+              onSubmit={(results) => {
+                props.onAdd(results);
+                setMenu(false);
+              }}
+            />
           </div>
         </ClickAwayListener>
       )}

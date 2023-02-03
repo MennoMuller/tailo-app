@@ -17,9 +17,7 @@ const App = () => {
   const [geo, setGeo] = useState({
     name: "",
     state: "",
-    country: "",
-    lat: 0,
-    lon: 0
+    country: ""
   });
   const [current, setCurrent] = useState({
     main: { temp: "", feels_like: "" },
@@ -186,7 +184,6 @@ const App = () => {
       ...siteToModify,
       url: props.url,
       name: props.name,
-      icon: props.icon,
       description: props.description
     };
     sitesList[sitesList.indexOf(siteToModify)] =
@@ -222,7 +219,6 @@ const App = () => {
       id: getNextWebsiteId(),
       url: props.url,
       name: props.name,
-      icon: props.icon,
       description: props.description,
       clicks: 0,
       user_id: user.id
@@ -261,6 +257,9 @@ const App = () => {
   };
 
   const handleWeatherUpdate = () => {
+    if (!geo.lat) {
+      return;
+    }
     fetch(
       "https://api.openweathermap.org/data/2.5/weather?lat=" +
         geo.lat +
@@ -271,7 +270,9 @@ const App = () => {
     )
       .then((response) => response.json())
       .then((data) => {
-        setCurrent(data);
+        if (data) {
+          setCurrent(data);
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -279,6 +280,9 @@ const App = () => {
   };
 
   const handleForecastUpdate = () => {
+    if (!geo.lat) {
+      return;
+    }
     fetch(
       "https://api.openweathermap.org/data/2.5/forecast?lat=" +
         geo.lat +
@@ -289,7 +293,9 @@ const App = () => {
     )
       .then((response) => response.json())
       .then((data) => {
-        setPredictions(data.list);
+        if (data) {
+          setPredictions(data.list);
+        }
       })
       .catch((error) => {
         console.log(error);

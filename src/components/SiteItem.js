@@ -51,11 +51,7 @@ const SiteItem = (props) => {
             <li>
               <button
                 className="w-full cursor-pointer py-1 px-2 text-white hover:bg-slate-800"
-                onClick={() =>
-                  console.log(
-                    "delete website " + props.index
-                  )
-                }
+                onClick={() => props.onDelete(props.index)}
               >
                 Delete website
               </button>
@@ -83,8 +79,12 @@ const SiteItem = (props) => {
             <ModifySiteMenu
               name={props.name}
               url={props.url}
-              icon={props.icon}
+              description={props.description}
               modify={true}
+              onSubmit={(results) => {
+                props.onModify(props.index, results);
+                setMenu(false);
+              }}
             />
           </div>
         </ClickAwayListener>
