@@ -19,6 +19,7 @@ const SiteItem = (props) => {
           props.onClick(props.index);
         }}
         target="_blank"
+        rel="noreferrer"
       >
         <div className="inline h-7 w-7 shrink-0 p-1 dark:rounded-md dark:bg-white dark:bg-opacity-30">
           <img
@@ -28,6 +29,7 @@ const SiteItem = (props) => {
                 ? props.icon
                 : props.iconGetter(props.url)
             }
+            alt=""
           />
         </div>
         <h4 className="ml-3 inline font-bold">
