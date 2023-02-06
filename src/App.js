@@ -229,6 +229,8 @@ const App = () => {
     if (city === null) {
       return;
     }
+
+    console.log("API call: Geo");
     fetch(
       "http://api.openweathermap.org/geo/1.0/direct?q=" +
         city +
@@ -260,6 +262,7 @@ const App = () => {
     if (!geo.lat) {
       return;
     }
+    console.log("API call: Current");
     fetch(
       "https://api.openweathermap.org/data/2.5/weather?lat=" +
         geo.lat +
@@ -283,6 +286,8 @@ const App = () => {
     if (!geo.lat) {
       return;
     }
+
+    console.log("API call: Forecast");
     fetch(
       "https://api.openweathermap.org/data/2.5/forecast?lat=" +
         geo.lat +
@@ -303,6 +308,7 @@ const App = () => {
   };
 
   const getCurrentCity = (lat, lon) => {
+    console.log("API call: Reverse Geo");
     fetch(
       `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=` +
         APIKey
