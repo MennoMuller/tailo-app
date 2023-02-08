@@ -47,30 +47,30 @@ const App = () => {
   };
 
   const compareTasks = (a, b) => {
-    if (!a.deadline_date) {
-      if (!b.deadline_date) {
+    if (!a.deadlineDate) {
+      if (!b.deadlineDate) {
         return 0;
       } else {
         return 1;
       }
     }
-    if (!b.deadline_date) {
+    if (!b.deadlineDate) {
       return -1;
     }
     let aDeadline, bDeadline;
-    if (a.deadline_time) {
+    if (a.deadlineTime) {
       aDeadline = Date.parse(
-        a.deadline_date + " " + a.deadline_time
+        a.deadlineDate + " " + a.deadlineTime
       );
     } else {
-      aDeadline = Date.parse(a.deadline_date);
+      aDeadline = Date.parse(a.deadlineDate);
     }
-    if (b.deadline_time) {
+    if (b.deadlineTime) {
       bDeadline = Date.parse(
-        b.deadline_date + " " + b.deadline_time
+        b.deadlineDate + " " + b.deadlineTime
       );
     } else {
-      bDeadline = Date.parse(b.deadline_date);
+      bDeadline = Date.parse(b.deadlineDate);
     }
 
     if (aDeadline < bDeadline) {
@@ -98,19 +98,19 @@ const App = () => {
   };
 
   const handleUser = () => {
-    fetch("data/user.json")
+    fetch("http://localhost:8080/api/user/1")
       .then((response) => response.json())
       .then((data) => setUser(data));
   };
 
   const handleTasks = () => {
-    fetch("data/tasks.json")
+    fetch("http://localhost:8080/api/task/all")
       .then((response) => response.json())
       .then((data) => setTasks(data));
   };
 
   const handleWebsites = () => {
-    fetch("data/websites.json")
+    fetch("http://localhost:8080/api/website/all")
       .then((response) => response.json())
       .then((data) => setWebsites(data));
   };
@@ -132,8 +132,8 @@ const App = () => {
       ...taskToModify,
       name: props.name,
       category: props.category,
-      deadline_date: props.deadline_date,
-      deadline_time: props.deadline_time
+      deadlineDate: props.deadlineDate,
+      deadlineTime: props.deadlineTime
     };
     tasksList[tasksList.indexOf(taskToModify)] =
       taskModified;
@@ -168,11 +168,29 @@ const App = () => {
       id: getNextTaskId(),
       name: props.name,
       category: props.category,
-      deadline_date: props.deadline_date,
-      deadline_time: props.deadline_time,
+      deadlineDate: props.deadlineDate,
+      deadlineTime: props.deadlineTime,
       complete: false,
       user_id: user.id
     });
+
+    fetch("http://localhost:8080/api/task/new", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        name: props.name,
+        category: props.category,
+        deadlineDate: props.deadlineDate,
+        deadlineTime: props.deadlineTime,
+        complete: false,
+        user_id: user.id
+      })
+    })
+      .then((response) => response.json())
+      .then((response) => console.log(response));
   };
 
   const handleModifyWebsite = (index, props) => {
@@ -223,6 +241,23 @@ const App = () => {
       clicks: 0,
       user_id: user.id
     });
+
+    fetch("http://localhost:8080/api/website/new", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        url: props.url,
+        name: props.name,
+        description: props.description,
+        clicks: 0,
+        user_id: user.id
+      })
+    })
+      .then((response) => response.json())
+      .then((response) => console.log(response));
   };
 
   const handleLocationUpdate = (city) => {

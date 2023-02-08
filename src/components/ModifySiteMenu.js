@@ -64,14 +64,14 @@ const ModifySiteMenu = (props) => {
               required
             />
           </div>
-          <div className="col-start-1 col-end-1 row-start-3 row-end-3 flex flex-col">
+          {/*<div className="col-start-1 col-end-1 row-start-3 row-end-3 flex flex-col">
             <label
               htmlFor="icon"
               className="absolute ml-2 text-sm text-slate-500"
             >
               Website icon
             </label>
-            {/* <div className="h-full rounded bg-slate-300 p-2 pt-4 dark:bg-slate-800">
+             <div className="h-full rounded bg-slate-300 p-2 pt-4 dark:bg-slate-800">
               <input
                 type="file"
                 id="icon"
@@ -79,8 +79,8 @@ const ModifySiteMenu = (props) => {
                 // value={this.props.icon}
                 className="mt-1 h-full dark:text-black dark:invert"
               />
-            </div> */}
-          </div>
+            </div> 
+          </div>*/}
           <div className="col-start-1 col-end-3 row-start-3 row-end-3 flex flex-col">
             <label
               htmlFor="description"

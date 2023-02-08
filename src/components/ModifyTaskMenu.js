@@ -2,12 +2,14 @@ import React, { useState } from "react";
 
 const ModifyTaskMenu = (props) => {
   const [name, setName] = useState(props.name);
-  const [category, setCategory] = useState(props.category);
-  const [deadline_date, setDeadlineDate] = useState(
-    props.deadline_date
+  const [category, setCategory] = useState(
+    props.category || "Misc"
   );
-  const [deadline_time, setDeadlineTime] = useState(
-    props.deadline_time
+  const [deadlineDate, setDeadlineDate] = useState(
+    props.deadlineDate
+  );
+  const [deadlineTime, setDeadlineTime] = useState(
+    props.deadlineTime
   );
 
   return (
@@ -21,8 +23,8 @@ const ModifyTaskMenu = (props) => {
           props.onSubmit({
             name: name,
             category: category,
-            deadline_date: deadline_date,
-            deadline_time: deadline_time
+            deadlineDate: deadlineDate,
+            deadlineTime: deadlineTime
           });
           e.preventDefault();
         }}
@@ -60,39 +62,20 @@ const ModifyTaskMenu = (props) => {
               id="category"
               name="category"
               className="h-full rounded bg-slate-300 p-2 pt-4 dark:bg-slate-800"
+              value={category}
               onChange={(e) => {
                 setCategory(e.target.value);
               }}
             >
-              <option
-                value="School"
-                selected={category === "School"}
-              >
-                School
-              </option>
-              <option
-                value="Social"
-                selected={category === "Social"}
-              >
-                Social
-              </option>
-              <option
-                value="Home"
-                selected={category === "Home"}
-              >
-                Home
-              </option>
-              <option
-                value="Misc"
-                selected={category === "Misc"}
-              >
-                Misc
-              </option>
+              <option value="School">School</option>
+              <option value="Social">Social</option>
+              <option value="Home">Home</option>
+              <option value="Misc">Misc</option>
             </select>
           </div>
           <div className="col-start-1 col-end-1 row-start-3 row-end-3 flex flex-col">
             <label
-              htmlFor="deadline_date"
+              htmlFor="deadlineDate"
               className="absolute ml-2 text-sm text-slate-500"
             >
               Deadline date
@@ -100,9 +83,9 @@ const ModifyTaskMenu = (props) => {
             <div className="h-full rounded bg-slate-300 p-2 pt-4 dark:bg-slate-800">
               <input
                 type="date"
-                id="deadline_date"
-                name="deadline_date"
-                value={deadline_date}
+                id="deadlineDate"
+                name="deadlineDate"
+                value={deadlineDate}
                 className="h-full w-full bg-transparent dark:text-black dark:invert"
                 onChange={(e) => {
                   setDeadlineDate(e.target.value);
@@ -112,7 +95,7 @@ const ModifyTaskMenu = (props) => {
           </div>
           <div className="col-start-2 col-end-2 row-start-3 row-end-3 flex flex-col">
             <label
-              htmlFor="deadline_time"
+              htmlFor="deadlineTime"
               className="absolute ml-2 text-sm text-slate-500"
             >
               Deadline time
@@ -120,9 +103,9 @@ const ModifyTaskMenu = (props) => {
             <div className="h-full rounded bg-slate-300 p-2 pt-4 dark:bg-slate-800">
               <input
                 type="time"
-                id="deadline_time"
-                name="deadline_time"
-                value={deadline_time}
+                id="deadlineTime"
+                name="deadlineTime"
+                value={deadlineTime}
                 className="h-full w-full bg-transparent dark:text-black dark:invert"
                 onChange={(e) => {
                   setDeadlineTime(e.target.value);

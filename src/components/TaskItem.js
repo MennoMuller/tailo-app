@@ -7,10 +7,10 @@ import ModifyTaskMenu from "./ModifyTaskMenu";
 
 const TaskItem = (props) => {
   let timeLeft, deadlineDate;
-  if (props.deadline_date) {
-    let deadlineTime = props.deadline_time || "23:59:59";
+  if (props.deadlineDate) {
+    let deadlineTime = props.deadlineTime || "23:59:59";
     deadlineDate = new Date(
-      props.deadline_date + " " + deadlineTime
+      props.deadlineDate + " " + deadlineTime
     );
     if (props.date) {
       timeLeft = TimeInterval.fromTimeBetweenTwoDates(
@@ -72,10 +72,10 @@ const TaskItem = (props) => {
             </div>
             <div className="flex flex-row items-center">
               <span className="mr-2 text-xs">
-                {props.deadline_date}
+                {props.deadlineDate}
               </span>
               <span className="mr-2 text-xs">
-                {props.deadline_time}
+                {props.deadlineTime}
               </span>
             </div>
           </div>
@@ -123,8 +123,8 @@ const TaskItem = (props) => {
             <ModifyTaskMenu
               name={props.name}
               category={props.category}
-              deadline_date={props.deadline_date}
-              deadline_time={props.deadline_time}
+              deadlineDate={props.deadlineDate}
+              deadlineTime={props.deadlineTime}
               date={props.date}
               modify={true}
               onSubmit={(results) => {

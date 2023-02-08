@@ -53,8 +53,8 @@ const TasksMain = (props) => {
               complete={task.complete}
               index={task.id}
               toggleComplete={props.toggleComplete}
-              deadline_date={task.deadline_date}
-              deadline_time={task.deadline_time}
+              deadlineDate={task.deadlineDate}
+              deadlineTime={task.deadlineTime}
               date={props.date}
               onModify={props.onModify}
               onDelete={props.onDelete}

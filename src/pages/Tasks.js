@@ -24,9 +24,9 @@ const Tasks = (props) => {
             props.tasks
               .filter((task) => !task.complete)
               .filter((task) => {
-                if (task.deadline_date) {
+                if (task.deadlineDate) {
                   let deadlineNr = Date.parse(
-                    task.deadline_date
+                    task.deadlineDate
                   );
                   if (props.date) {
                     return (
