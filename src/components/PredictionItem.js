@@ -12,7 +12,7 @@ const PredictionItem = (props) => {
 
       <img
         src={
-          "http://openweathermap.org/img/w/" +
+          "https://openweathermap.org/img/w/" +
           props.predictionItem.weather[0].icon +
           ".png"
         }

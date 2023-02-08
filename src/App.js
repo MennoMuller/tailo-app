@@ -171,7 +171,7 @@ const App = () => {
       deadlineDate: props.deadlineDate,
       deadlineTime: props.deadlineTime,
       complete: false,
-      user_id: user.id
+      userId: user.id
     });
 
     fetch("http://localhost:8080/api/task/new", {
@@ -186,7 +186,7 @@ const App = () => {
         deadlineDate: props.deadlineDate,
         deadlineTime: props.deadlineTime,
         complete: false,
-        user_id: user.id
+        userId: user.id
       })
     })
       .then((response) => response.json())
@@ -239,7 +239,7 @@ const App = () => {
       name: props.name,
       description: props.description,
       clicks: 0,
-      user_id: user.id
+      userId: user.id
     });
 
     fetch("http://localhost:8080/api/website/new", {
@@ -253,7 +253,7 @@ const App = () => {
         name: props.name,
         description: props.description,
         clicks: 0,
-        user_id: user.id
+        userId: user.id
       })
     })
       .then((response) => response.json())
@@ -267,7 +267,7 @@ const App = () => {
 
     console.log("API call: Geo");
     fetch(
-      "http://api.openweathermap.org/geo/1.0/direct?q=" +
+      "https://api.openweathermap.org/geo/1.0/direct?q=" +
         city +
         "&limit=1&appid=" +
         APIKey
@@ -345,7 +345,7 @@ const App = () => {
   const getCurrentCity = (lat, lon) => {
     console.log("API call: Reverse Geo");
     fetch(
-      `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=` +
+      `https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=` +
         APIKey
     )
       .then((response) => response.json())

@@ -20,7 +20,7 @@ const WeatherNow = (props) => {
         <div className="col-start-2 col-end-2 row-start-1 row-end-1 flex flex-row items-center gap-3 text-center">
           <img
             src={
-              "http://openweathermap.org/img/w/" +
+              "https://openweathermap.org/img/w/" +
               props.icon +
               ".png"
             }

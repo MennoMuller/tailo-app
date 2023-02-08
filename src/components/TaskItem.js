@@ -19,30 +19,38 @@ const TaskItem = (props) => {
     }
   }
 
+  const deadlineStuff = (left, past) => {
+    let warningIcon, deadlineMessage;
+    if ((left && left.inWeeks() <= 1) || past) {
+      if (past || left.inDays() <= 1) {
+        warningIcon = "bg-red-500 font-bold text-white";
+        if (past) {
+          deadlineMessage =
+            Math.round(left.inDays()) + " days overdue";
+        } else {
+          deadlineMessage = "Deadline today";
+        }
+      } else {
+        warningIcon = "bg-yellow-400 font-bold text-white";
+        deadlineMessage = "Deadline this week";
+      }
+    } else {
+      warningIcon = "bg-green-500 text-green-500";
+      deadlineMessage = left
+        ? "Deadline in " +
+          Math.round(left.inDays()) +
+          " days"
+        : "No deadline";
+    }
+    return { icon: warningIcon, message: deadlineMessage };
+  };
+
   const [popup, setPopup] = useState(false);
   const [menu, setMenu] = useState(false);
-  let warningIcon, deadlineMessage;
-  if (
-    (timeLeft && timeLeft.inWeeks() <= 1) ||
+  const warning = deadlineStuff(
+    timeLeft,
     isPast(deadlineDate)
-  ) {
-    if (isPast(deadlineDate) || timeLeft.inDays() <= 1) {
-      warningIcon = "bg-red-500 font-bold text-white";
-      deadlineMessage = isPast(deadlineDate)
-        ? Math.round(timeLeft.inDays()) + " days overdue"
-        : "Deadline today";
-    } else {
-      warningIcon = "bg-yellow-400 font-bold text-white";
-      deadlineMessage = "Deadline this week";
-    }
-  } else {
-    warningIcon = "bg-green-500 text-green-500";
-    deadlineMessage = deadlineDate
-      ? "Deadline in " +
-        Math.round(timeLeft.inDays()) +
-        " days"
-      : "No deadline";
-  }
+  );
 
   return (
     <div
@@ -65,13 +73,13 @@ const TaskItem = (props) => {
               <span
                 className={
                   "mr-2 flex h-5 w-5 items-center justify-center rounded-full " +
-                  warningIcon
+                  warning.icon
                 }
               >
                 !
               </span>
               <span className="text-base">
-                {deadlineMessage}
+                {warning.message}
               </span>
             </div>
             <div className="flex flex-row items-center">
