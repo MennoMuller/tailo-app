@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import ClickAwayListener from "react-click-away-listener";
 import { TimeInterval } from "time-interval-js";
 import { isPast } from "date-fns";
@@ -22,6 +21,29 @@ const TaskItem = (props) => {
 
   const [popup, setPopup] = useState(false);
   const [menu, setMenu] = useState(false);
+  let warningIcon, deadlineMessage;
+  if (
+    (timeLeft && timeLeft.inWeeks() <= 1) ||
+    isPast(deadlineDate)
+  ) {
+    if (isPast(deadlineDate) || timeLeft.inDays() <= 1) {
+      warningIcon = "bg-red-500 font-bold text-white";
+      deadlineMessage = isPast(deadlineDate)
+        ? Math.round(timeLeft.inDays()) + " days overdue"
+        : "Deadline today";
+    } else {
+      warningIcon = "bg-yellow-400 font-bold text-white";
+      deadlineMessage = "Deadline this week";
+    }
+  } else {
+    warningIcon = "bg-green-500 text-green-500";
+    deadlineMessage = deadlineDate
+      ? "Deadline in " +
+        Math.round(timeLeft.inDays()) +
+        " days"
+      : "No deadline";
+  }
+
   return (
     <div
       className={
@@ -43,31 +65,13 @@ const TaskItem = (props) => {
               <span
                 className={
                   "mr-2 flex h-5 w-5 items-center justify-center rounded-full " +
-                  ((timeLeft && timeLeft.inWeeks() <= 1) ||
-                  isPast(deadlineDate)
-                    ? isPast(deadlineDate) ||
-                      timeLeft.inDays() <= 1
-                      ? "bg-red-500 font-bold text-white"
-                      : "bg-yellow-400 font-bold text-white"
-                    : "bg-green-500 text-green-500")
+                  warningIcon
                 }
               >
                 !
               </span>
               <span className="text-base">
-                {timeLeft
-                  ? isPast(deadlineDate)
-                    ? Math.round(timeLeft.inDays()) +
-                      " days overdue"
-                    : "Deadline " +
-                      (timeLeft.inDays() <= 1
-                        ? "today"
-                        : timeLeft.inWeeks() <= 1
-                        ? "this week"
-                        : "in " +
-                          Math.round(timeLeft.inDays()) +
-                          " days")
-                  : "No deadline"}
+                {deadlineMessage}
               </span>
             </div>
             <div className="flex flex-row items-center">

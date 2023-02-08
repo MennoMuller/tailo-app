@@ -2,7 +2,6 @@ import React from "react";
 import WeatherForecast from "../blocks/WeatherForecast";
 import WeatherLocation from "../blocks/WeatherLocation";
 import WeatherNow from "../blocks/WeatherNow";
-//import "./Weather.css";
 
 const Weather = (props) => {
   return (

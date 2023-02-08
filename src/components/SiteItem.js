@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import ClickAwayListener from "react-click-away-listener";
 import ModifySiteMenu from "./ModifySiteMenu";
-//import "./ListItem.css";
 
 const SiteItem = (props) => {
   const [popup, setPopup] = useState(false);
