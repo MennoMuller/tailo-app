@@ -90,7 +90,18 @@ const App = () => {
     taskToModify.complete = !taskToModify.complete;
     setTasks(tasksList);
 
-    //TODO: Database update
+    fetch("http://localhost:8080/api/task/" + index, {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        complete: taskToModify.complete
+      })
+    })
+      .then((response) => response.json())
+      .then((response) => console.log(response));
   };
 
   const tick = () => {
@@ -116,11 +127,24 @@ const App = () => {
   };
 
   const handleWebsiteClick = (index) => {
-    let websitesList = [...websites];
-    websitesList.find((site) => site.id === index).clicks++;
+    const websitesList = [...websites];
+    const newClicks = ++websitesList.find(
+      (site) => site.id === index
+    ).clicks;
     setWebsites(websitesList);
 
-    //TODO: Update database with new click count
+    fetch("http://localhost:8080/api/website/" + index, {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        clicks: newClicks
+      })
+    })
+      .then((response) => response.json())
+      .then((response) => console.log(response));
   };
 
   const handleModifyTask = (index, props) => {
@@ -140,7 +164,16 @@ const App = () => {
 
     setTasks(tasksList);
 
-    //TODO: Database update
+    fetch("http://localhost:8080/api/task/" + index, {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(taskModified)
+    })
+      .then((response) => response.json())
+      .then((response) => console.log(response));
   };
 
   const handleDeleteTask = (index) => {
@@ -150,13 +183,35 @@ const App = () => {
     );
     setTasks(tasksList);
 
-    //TODO: Database update
+    fetch("http://localhost:8080/api/task/" + index, {
+      method: "DELETE",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      }
+    }).then((response) => console.log(response));
+  };
+
+  const fixTaskId = (oldId, newId) => {
+    const tasksList = [...tasks];
+    const taskToModify = tasksList.find(
+      (task) => task.id === oldId
+    );
+    let taskModified = {
+      ...taskToModify,
+      id: newId
+    };
+    tasksList[tasksList.indexOf(taskToModify)] =
+      taskModified;
+
+    setTasks(tasksList);
+    //low priority to do: update other values on database if needed
   };
 
   const getNextTaskId = () => {
     let id = 1;
     tasks.forEach((task) => {
-      if (task.id === id) {
+      if (task.id === id + "a") {
         id++;
       }
     });
@@ -164,8 +219,9 @@ const App = () => {
   };
 
   const handleAddTask = (props) => {
+    const tempId = getNextTaskId() + "a";
     tasks.push({
-      id: getNextTaskId(),
+      id: tempId,
       name: props.name,
       category: props.category,
       deadlineDate: props.deadlineDate,
@@ -190,7 +246,10 @@ const App = () => {
       })
     })
       .then((response) => response.json())
-      .then((response) => console.log(response));
+      .then((response) => {
+        console.log(response);
+        fixTaskId(tempId, response.id);
+      });
   };
 
   const handleModifyWebsite = (index, props) => {
@@ -209,7 +268,16 @@ const App = () => {
 
     setWebsites(sitesList);
 
-    //TODO: Database update
+    fetch("http://localhost:8080/api/website/" + index, {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(siteModified)
+    })
+      .then((response) => response.json())
+      .then((response) => console.log(response));
   };
 
   const handleDeleteWebsite = (index) => {
@@ -219,13 +287,35 @@ const App = () => {
     );
     setWebsites(sitesList);
 
-    //TODO: Database update
+    fetch("http://localhost:8080/api/website/" + index, {
+      method: "DELETE",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      }
+    }).then((response) => console.log(response));
+  };
+
+  const fixWebsiteId = (oldId, newId) => {
+    const sitesList = [...websites];
+    const siteToModify = sitesList.find(
+      (site) => site.id === oldId
+    );
+    let siteModified = {
+      ...siteToModify,
+      id: newId
+    };
+    sitesList[sitesList.indexOf(siteToModify)] =
+      siteModified;
+
+    setWebsites(sitesList);
+    //low priority to do: update other values on database if needed
   };
 
   const getNextWebsiteId = () => {
     let id = 1;
     websites.forEach((site) => {
-      if (site.id === id) {
+      if (site.id === id + "a") {
         id++;
       }
     });
@@ -233,8 +323,9 @@ const App = () => {
   };
 
   const handleAddWebsite = (props) => {
+    const tempId = getNextWebsiteId() + "a";
     websites.push({
-      id: getNextWebsiteId(),
+      id: tempId,
       url: props.url,
       name: props.name,
       description: props.description,
@@ -257,7 +348,10 @@ const App = () => {
       })
     })
       .then((response) => response.json())
-      .then((response) => console.log(response));
+      .then((response) => {
+        console.log(response);
+        fixWebsiteId(tempId, response.id);
+      });
   };
 
   const handleLocationUpdate = (city) => {

@@ -2,5 +2,5 @@ projectKey=Tailo-Frontend
 serverUrl=http://localhost:9000
 serverVersion=9.9.0.65466
 dashboardUrl=http://localhost:9000/dashboard?id=Tailo-Frontend
-ceTaskId=AYYxSR311nvSVHB8-KSL
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AYYxSR311nvSVHB8-KSL
+ceTaskId=AYYxb1DW1nvSVHB8-Ka_
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AYYxb1DW1nvSVHB8-Ka_
